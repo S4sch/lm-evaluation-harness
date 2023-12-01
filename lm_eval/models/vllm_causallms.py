@@ -112,10 +112,14 @@ please install vllm via `pip install lm-eval[vllm]` or `pip install -e .[vllm]`"
         **kwargs,
     ):
 
+        # Print the contents of kwargs
+        print("kwargs before modification:", kwargs)
         
         # Remove 'num_beams' from kwargs if it exists
         kwargs.pop('num_beams', None)
 
+        kwargs.pop('max_length', None)
+        
         if "do_sample" in kwargs.keys():
             kwargs.pop("do_sample")
         if generate:
